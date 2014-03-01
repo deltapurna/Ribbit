@@ -25,12 +25,14 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if (position == 0) {
-            return new InboxFragment();
+
+        switch (position) {
+            case 0:
+                return new InboxFragment();
+            case 1:
+                return new FriendsFragment();
         }
-        else if (position == 1) {
-            return new FriendsFragment();
-        }
+
         return null;
     }
 
