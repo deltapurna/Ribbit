@@ -44,11 +44,10 @@ public class SignUpActivity extends Activity {
                 if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
                     builder.setMessage(getString(R.string.signup_error_message))
-                        .setTitle(getString(R.string.signup_error_title))
-                        .setPositiveButton(android.R.string.ok, null);
+                            .setTitle(getString(R.string.signup_error_title))
+                            .setPositiveButton(android.R.string.ok, null);
                     builder.create().show();
-                }
-                else {
+                } else {
                     ParseUser newUser = new ParseUser();
                     newUser.setUsername(username);
                     newUser.setPassword(password);
@@ -58,15 +57,14 @@ public class SignUpActivity extends Activity {
                     newUser.signUpInBackground(new SignUpCallback() {
                         @Override
                         public void done(ParseException e) {
-                            if (e == null){
+                            if (e == null) {
                                 // success!
                                 setProgressBarIndeterminateVisibility(false);
                                 Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
-                            }
-                            else {
+                            } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
                                 builder.setMessage(e.getMessage())
                                         .setTitle(getString(R.string.signup_error_title))
